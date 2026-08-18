@@ -4,11 +4,24 @@
 
 这个仓库不只整理产品功能，而是尝试回答：一个基础模型如何借助 Harness 逐步获得观察仓库、调用工具、修改代码、验证结果、跨会话推进和安全协作的能力；这些能力应如何实现、怎样失败，又该如何用实验验证。
 
-## 三条学习线
+## 四条学习线
 
 - [Code Agent 论文阅读路线](./Paper-Reading/README.md)：从 ReAct、SWE-bench 到 SWE-Gym，理解交互、工具、平台、训练与验证的研究主线。
 - [从零构建一个 Code Agent：最小 Harness 实践](./最小Code%20Agent%20Harness实践/README.md)：用约 300 行 Python 跑通搜索、阅读、编辑、测试与轨迹记录。
 - **Code Agent 架构系列 01–14**：每个主题都是仓库根目录下的独立 Markdown 文件，包含模块边界、协议、伪代码、失败模式、实验和演进路径。
+- [主流 Code Agent 源码阅读路线](./Source-Code-Reading/README.md)：固定上游 commit，沿真实调用链解读 SWE-agent、Pi、DeepSeek Harness 与 Codex，并提供故障注入实验和横向比较。
+
+## 主流 Code Agent 源码解读
+
+| 项目 | 重点 | 阅读入口 |
+| --- | --- | --- |
+| SWE-agent 家族 | mini 的最小闭环；classic 的 ACI、History Processor 与 SWE-ReX | [进入](./Source-Code-Reading/01-mini-swe-agent/README.md) |
+| Pi Agent | 流式 Agent Core、Session Tree、Compaction 与 Extension | [进入](./Source-Code-Reading/02-pi-agent/README.md) |
+| DeepSeek Harness | Cordis 插件树、SessionEvent、作用域 Tool Pipeline | [进入](./Source-Code-Reading/03-deepseek-harness/README.md) |
+| Codex | Thread/Session/Turn、Context、Approval 与跨平台 Sandbox | [进入](./Source-Code-Reading/04-codex/README.md) |
+| 横向比较 | 状态真源、输入调度、工具控制、扩展与安全取舍 | [进入](./Source-Code-Reading/05-cross-agent-comparison/README.md) |
+
+源码文章不是逐行翻译：每套解读都声明固定 SHA 和覆盖边界，给出入口、对象关系、一次完整请求路径、关键失败语义以及可重复的源码实验。这样理论系列中的 Agent Loop、Context Manager、Tool Router、Sandbox 和 Verifier，可以映射到真实项目的具体实现。
 
 ## Code Agent 架构系列
 
@@ -74,6 +87,7 @@ Security、Revision、Budget 与 Evidence 贯穿所有模块。
 2. 阅读 01–05，理解“能跑起来”和“可信运行”之间的差距。
 3. 阅读 06–09，把通用 Agent 变成真正理解仓库、可靠编辑并能长期推进的 Code Agent。
 4. 阅读 10–14，建立观测、评测、并行扩展和安全治理能力。
-5. 每读一篇，选择其中一个实验加入 Harness；不要只增加功能，不测它是否改善结果。
+5. 按 mini-SWE-agent → Pi → DeepSeek Harness → Codex 阅读源码，先建立最小闭环，再增加会话、插件和生产级安全复杂度。
+6. 每读一篇，选择其中一个实验加入 Harness；不要只增加功能，不测它是否改善结果。
 
 评价任何 Code Agent 时，可以持续追问六件事：它保存了什么状态、看到了什么上下文、允许执行什么动作、动作在哪个环境运行、完成由什么证据决定、失败和成本如何被观测。
