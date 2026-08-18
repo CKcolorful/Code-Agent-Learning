@@ -18,15 +18,14 @@
 可以把它写成一个简单公式：
 
 ```text
-Code Agent = Model + Harness + Environment
+Code Agent = Model + Harness 
 ```
 
 其中：
 
 - **Model** 负责理解任务和选择下一步行动；
 - **Harness** 负责组织循环、定义工具、维护上下文、控制预算并记录轨迹；
-- **Environment** 是代码仓库、依赖、测试、编译器和操作系统。
-
+  
 很多 Code Agent 的差距，不只来自模型能力，也来自 Harness 是否给了模型合适的观察、动作和反馈。
 
 这篇文章将从零实现一个最小但完整的 Harness。它不是生产级产品，却足以回答一个关键问题：**一个基础模型究竟怎样在 Harness 的帮助下，变成能够进入仓库干活的 Code Agent？**
