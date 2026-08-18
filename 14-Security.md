@@ -96,7 +96,7 @@ expires in 30 minutes
 
 ```text
 差：允许执行 curl 命令吗？
-好：允许把 06-Repository-Intelligence/README.md 上传到 CKcolorful/Code-Agent-Learning 的 main 分支吗？
+好：允许把 06-Repository-Intelligence.md 上传到 CKcolorful/Code-Agent-Learning 的 main 分支吗？
 ```
 
 审批请求包含目的、目标、数据、影响、可逆性和依据。相同低风险操作可由策略预授权；高风险动作使用 scoped one-shot approval。
