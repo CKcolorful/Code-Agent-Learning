@@ -526,6 +526,8 @@ Harness 把结果交还模型
 
 理解并亲手实现这个最小闭环，是继续研究 Tool Use、Context Compaction、Memory、Subagent、Sandbox 和 Evaluation 的最好起点。
 
+如果要继续把这个最小实现演进为更可靠的系统，可以按 [Code Agent 核心架构：从最小 Harness 到可信执行系统](../Core-Architecture/README.md) 的顺序，分别深入 Agent Loop、Context Manager、Tool Router、Sandboxed Executor 和 Verifier。
+
 ---
 
 ## 参考资料
